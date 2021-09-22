@@ -51,3 +51,18 @@ After this I felt a little disappointed as I couldn't really understand why this
 
 Indeed it did work quite well!
 
+## Regularization
+
+Before this experiment, my understanding of regularization was that it was a technique to limit how much the gradients can change in one training cycle. I believed this was useful in preventing overfitting and also for preventing gradients becoming close to zero or very large.
+
+With this knowledge in hand, I figured the best approach was to simulate some overfitting and then experiment using different forms of regularization. To cause overfitting, I turned the noise slider to maximum to ensure there were irregularities in the data. Then I proceedeed to add a lot of layers to the neural net and added more parameters to the input so there was more capacity to overfit. Then I trained until the loss started to increase, which took close to 1000 epochs. The result was as follows.
+
+![example of overfitting](relu-overfitting-1000epochs.png)
+
+Next I set the regularization to L1 norm. At first I set regularization to 0 and found that this did nothing to change the results. I understood then that the regularization rate controlled the extent of regularization. After experimenting with a few values, I realized that a regularization rate that was too high impeded training as the gradients would barely change. 0.03 seemed to be a sweet spot. The result after also training for 1000 epochs now barely had any overfitting.
+
+![l1 regularization to solve overfitting](relu-regularized-l1-norm-0point03-reg-rate.png)
+
+I tried the same thing with L2 norm regularization with the same regularization rate of 0.03. The results were similar with overfitting greatly reduced. There are slight differences but I am not sure why yet. I definitely have to look more into the differences between the two later.
+
+![l2 regularization to solve overfitting](relu-regularized-l2-norm-0point03-reg-rate.png)
